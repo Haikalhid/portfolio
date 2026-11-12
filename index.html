@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Haikal Hidayat — Internet Engineering, AI &amp; Cybersecurity Portfolio</title>
+  <meta name="description" content="Portofolio resmi Muhammad Haikal Hidayat — Mahasiswa Sarjana Terapan Teknologi Rekayasa Internet Universitas Gadjah Mada (UGM) dengan fokus pada Cybersecurity, IoT Security, Artificial Intelligence, dan Network Operations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <!-- Top Navigation Header (Inspired by Dymas Alfin Reference) -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <div class="availability-pill" role="status" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span data-i18n="nav.available">Available for New Project</span>
+      </div>
+
+      <nav class="primary-nav" aria-label="Navigasi Utama">
+        <ul class="nav-list">
+          <li>
+            <a href="#work" class="nav-link">
+              <span data-i18n="nav.work">Work</span>
+              <span class="nav-count">[03]</span>
+            </a>
+          </li>
+          <li>
+            <a href="#services" class="nav-link">
+              <span data-i18n="nav.service">Service</span>
+              <span class="nav-count">[04]</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="nav-link">
+              <span data-i18n="nav.experience">Experience</span>
+              <span class="nav-count">[06]</span>
+            </a>
+          </li>
+          <li>
+            <a href="#education" class="nav-link">
+              <span data-i18n="nav.education">Education</span>
+              <span class="nav-count">[UGM]</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Ganti Bahasa Indonesia atau Inggris">
+          <span class="lang-option active" data-lang-indicator="id">ID</span>
+          <span class="lang-divider" aria-hidden="true">/</span>
+          <span class="lang-option" data-lang-indicator="en">EN</span>
+        </button>
+
+        <button type="button" class="btn-pill btn-dark" id="open-contact-modal">
+          <span data-i18n="nav.letsTalk">Let's Talk</span>
+          <svg class="icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO SECTION (Reference Layout: Outlined + Solid Giant Name, Centered Portrait, Left Bio/CTA, Right Social Pills) -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="hero-container">
+        <p class="hero-eyebrow">
+          <span class="mono-tag">MUHAMMAD HAIKAL HIDAYAT</span>
+          <span class="eyebrow-sep" aria-hidden="true">•</span>
+          <span data-i18n="hero.univ">Teknologi Rekayasa Internet — Universitas Gadjah Mada (GPA 3.71/4.00)</span>
+        </p>
+
+        <!-- Giant Display Headline matching DYMAS ALFIN reference -->
+        <h1 id="hero-heading" class="hero-display-name" aria-label="Muhammad Haikal Hidayat">
+          <span class="display-outline">HAIKAL</span>
+          <span class="display-solid">HIDAYAT</span>
+        </h1>
+
+        <div class="hero-stage">
+          <!-- Left Column: Title, Tagline, CTA -->
+          <div class="hero-left">
+            <div class="role-badge-group">
+              <span class="role-chip" data-i18n="hero.chip1">Cybersecurity &amp; IoT Security</span>
+              <span class="role-chip" data-i18n="hero.chip2">Network Operations</span>
+              <span class="role-chip" data-i18n="hero.chip3">AI Enthusiast</span>
+            </div>
+            <h2 class="hero-role" data-i18n="hero.role">Internet Engineering &amp; Security</h2>
+            <p class="hero-tagline" data-i18n="hero.tagline">
+              Mahasiswa Teknologi Rekayasa Internet UGM yang berfokus pada pengembangan keamanan sistem IoT, operasional jaringan berskala nasional (NOC), dan integrasi kecerdasan buatan.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#work" class="btn-pill btn-dark btn-lg">
+                <span data-i18n="hero.ctaPrimary">Let's collaborate</span>
+                <svg class="icon-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a href="#about" class="btn-pill btn-outline" data-i18n="hero.ctaSecondary">
+                Lihat Profil Lengkap
+              </a>
+            </div>
+          </div>
+
+          <!-- Center Column: Interactive 3D Abstract Geometric Cyber-Lattice -->
+          <div class="hero-center">
+            <div class="geo-stage-card">
+              <div class="geo-stage-header">
+                <span class="geo-coord">NODE // 3D.MESH.V1</span>
+                <button type="button" class="geo-motion-btn" id="toggle-geo-motion" aria-label="Pause 3D rotation">
+                  Pause
+                </button>
+              </div>
+
+              <div class="geo-canvas-wrap">
+                <canvas
+                  id="geo-3d-canvas"
+                  class="geo-canvas"
+                  width="460"
+                  height="460"
+                  role="img"
+                  aria-label="Objek 3D geometris abstrak berlapis yang merepresentasikan jaringan, keamanan siber, dan kecerdasan buatan"
+                ></canvas>
+              </div>
+
+              <div class="geo-stage-footer" aria-hidden="true">
+                <span class="geo-pill">AI • IOT • SEC</span>
+                <span class="geo-status-indicator">
+                  <span class="geo-dot"></span>
+                  <span>ACTIVE TOPOLOGY</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Vertical Social & Contact Pill Stack matching reference -->
+          <div class="hero-right" aria-label="Tautan Sosial dan Kontak">
+            <a href="https://www.linkedin.com/in/muhammad-haikal-hidayat/" target="_blank" rel="noopener noreferrer" class="social-pill">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <a href="https://github.com/Haikalhid" target="_blank" rel="noopener noreferrer" class="social-pill">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+              <span>GitHub (@Haikalhid)</span>
+            </a>
+
+            <a href="mailto:haikalhidayat52@gmail.com" class="social-pill">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <span>Email</span>
+            </a>
+
+            <a href="https://wa.me/6287888451327" target="_blank" rel="noopener noreferrer" class="social-pill">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>(+62) 878-8845-1327</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT & KEY METRICS SECTION -->
+    <section id="about" class="section about-section scroll-reveal" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header-grid">
+          <div class="section-label">
+            <span class="mono-index">01 / PROFILE</span>
+            <h2 id="about-heading" class="section-title" data-i18n="about.title">Tentang Saya</h2>
+          </div>
+          <div class="about-narrative">
+            <p class="lead-paragraph" data-i18n="about.lead">
+              Mahasiswa Sarjana Terapan Teknologi Rekayasa Internet di Universitas Gadjah Mada (IPK 3.71/4.00) dengan minat kuat di bidang Artificial Intelligence dan Cybersecurity.
+            </p>
+            <p class="body-paragraph" data-i18n="about.body">
+              Saya memiliki pengalaman langsung dalam operasional jaringan (Network Operations Center), memantau ratusan titik jaringan di wilayah 3T (Terdepan, Terluar, Tertinggal), mendukung teknisi lapangan dalam pemecahan masalah (troubleshooting), serta menyusun laporan status harian. Selain itu, saya berpengalaman dalam penjaminan kualitas data (Data QA), membersihkan, memvalidasi, dan menstrukturkan data marketplace untuk mendukung analisis klien. Melalui keterlibatan aktif di organisasi kemahasiswaan dan konferensi teknologi internasional, saya terus mengasah kemampuan kolaborasi tim, komunikasi profesional, dan koordinasi acara.
+            </p>
+          </div>
+        </div>
+
+        <dl class="metrics-grid" aria-label="Capaian Utama">
+          <div class="metric-card">
+            <dt class="metric-label" data-i18n="metrics.m1Label">IPK Universitas Gadjah Mada</dt>
+            <dd class="metric-value">3.71<span class="metric-unit">/4.00</span></dd>
+            <p class="metric-note" data-i18n="metrics.m1Note">Sarjana Terapan Teknologi Rekayasa Internet</p>
+          </div>
+
+          <div class="metric-card">
+            <dt class="metric-label" data-i18n="metrics.m2Label">Monitoring Jaringan Harian</dt>
+            <dd class="metric-value">475<span class="metric-unit">Sites</span></dd>
+            <p class="metric-note" data-i18n="metrics.m2Note">Wilayah 3T melintasi 13 klaster operasional</p>
+          </div>
+
+          <div class="metric-card">
+            <dt class="metric-label" data-i18n="metrics.m3Label">Pemulihan Gangguan NOC</dt>
+            <dd class="metric-value">50–100<span class="metric-unit">Sites</span></dd>
+            <p class="metric-note" data-i18n="metrics.m3Note">Kolaborasi troubleshooting bersama teknisi lapangan</p>
+          </div>
+
+          <div class="metric-card">
+            <dt class="metric-label" data-i18n="metrics.m4Label">Validasi Data Marketplace</dt>
+            <dd class="metric-value">1,000<span class="metric-unit">+/bln</span></dd>
+            <p class="metric-note" data-i18n="metrics.m4Note">Standarisasi produk dari 50+ brand &amp; 4 platform</p>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK / PROJECTS SECTION (Work [03]) -->
+    <section id="work" class="section work-section scroll-reveal" aria-labelledby="work-heading">
+      <div class="container">
+        <div class="section-top-bar">
+          <div>
+            <span class="mono-index">02 / SELECTED WORK [03]</span>
+            <h2 id="work-heading" class="section-title" data-i18n="work.title">Proyek Unggulan</h2>
+          </div>
+          <p class="section-subtitle" data-i18n="work.subtitle">
+            Implementasi nyata pada sistem akses berbasis AI, penguatan keamanan infrastruktur IoT, dan pengembangan perangkat jaringan.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- PROYEK 1: SAPA Dashboard -->
+          <article class="project-card" aria-labelledby="proj-1-title">
+            <div class="project-card-top">
+              <span class="project-number">PROYEK 01 • COLLABORATION</span>
+              <span class="project-status status-complete" data-i18n="work.p1Status">Team Collaboration</span>
+            </div>
+
+            <div class="project-visual visual-sapa" aria-hidden="true">
+              <div class="visual-schematic">
+                <div class="schematic-node">ESP32 Smart Gate</div>
+                <div class="schematic-arrow">→</div>
+                <div class="schematic-node highlight">AI Face &amp; Liveness</div>
+                <div class="schematic-arrow">→</div>
+                <div class="schematic-node">SAPA Dashboard</div>
+              </div>
+              <span class="visual-caption">Biometric Access Control &amp; Telemetry</span>
+            </div>
+
+            <div class="project-body">
+              <h3 id="proj-1-title" class="project-title">SAPA — Smart Access Prototyping Application</h3>
+              <p class="project-role-tag" data-i18n="work.p1Role">Proyek Kolaborasi Tim • Kontributor: @Haikalhid</p>
+              <p class="project-description" data-i18n="work.p1Desc">
+                Proyek kolaborasi pengembangan sistem kontrol akses gerbang pintar (smart gate) otomatis berbasis Internet of Things (IoT) yang mengintegrasikan model Artificial Intelligence untuk pemindaian biometrik wajah (face recognition &amp; liveness detection), mikrokontroler ESP32, infrastruktur backend Python, serta dashboard pemantauan terpusat secara real-time.
+              </p>
+              <p class="project-collab-meta">
+                <span data-i18n="work.repoOwnerLabel">Repositori Tim:</span>
+                <code>farhanwijayanto/SAPA-Dashboard</code>
+              </p>
+            </div>
+
+            <div class="project-meta">
+              <ul class="tag-list" aria-label="Teknologi Proyek 1">
+                <li class="tech-tag">Python &amp; FastAPI</li>
+                <li class="tech-tag">AI Face Recognition</li>
+                <li class="tech-tag">ESP32 IoT</li>
+                <li class="tech-tag">React &amp; TypeScript</li>
+                <li class="tech-tag">Docker &amp; Kubernetes</li>
+              </ul>
+
+              <div class="project-links">
+                <a href="https://github.com/farhanwijayanto/SAPA-Dashboard.git" target="_blank" rel="noopener noreferrer" class="btn-pill btn-dark btn-sm">
+                  <span data-i18n="work.viewRepo">Lihat Repository Tim</span>
+                  <svg class="icon-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROYEK 2: Proyek Monitoring DTEDI (Fokus Khusus Keamanan IoT!) -->
+          <article class="project-card project-card-featured" aria-labelledby="proj-2-title">
+            <div class="project-card-top">
+              <span class="project-number">PROYEK 02 • COLLABORATION</span>
+              <span class="project-status status-security" data-i18n="work.p2Status">Collab: IoT Security Focus</span>
+            </div>
+
+            <div class="project-visual visual-security" aria-hidden="true">
+              <div class="visual-schematic">
+                <div class="schematic-node">Edge Whitelist</div>
+                <div class="schematic-arrow">→</div>
+                <div class="schematic-node highlight">TLS + Auth Headers</div>
+                <div class="schematic-arrow">→</div>
+                <div class="schematic-node">Argon2id &amp; RBAC</div>
+              </div>
+              <span class="visual-caption">End-to-End IoT Security Hardening Layer</span>
+            </div>
+
+            <div class="project-body">
+              <h3 id="proj-2-title" class="project-title">Smart Building Monitoring System (DTEDI)</h3>
+              <p class="project-role-tag" data-i18n="work.p2Role">Proyek Kolaborasi • Fokus Kontribusi (@Haikalhid): Keamanan IoT</p>
+              <p class="project-description" data-i18n="work.p2Desc">
+                Berkolaborasi pada platform pemantauan gedung pintar DTEDI dengan fokus spesifik pada perancangan dan penguatan lapisan keamanan (IoT Security Enhancement). Mencakup pengamanan autentikasi jalur edge-ke-server menggunakan verifikasi kriptografis constant-time di atas TLS, pemfilteran whitelist perangkat di tingkat gateway, pengamanan sesi berbasis Argon2id, pembatasan laju akses (rate limiting &amp; per-user lockout), kontrol akses berbasis peran (RBAC), serta prosedur rotasi kredensial.
+              </p>
+              <p class="project-scope-note" data-i18n="work.p2Note">
+                Catatan Peran Kolaborasi: Proyek ini merupakan repositori kolaborasi tim (mochmizan/proyek-monitoring-dtedi). Kontribusi saya (@Haikalhid) berfokus khusus pada pengembangan keamanan sistem IoT, bukan pada pembangunan awal perangkat IoT maupun komunikasi dasar sensornya.
+              </p>
+            </div>
+
+            <div class="project-meta">
+              <ul class="tag-list" aria-label="Teknologi Keamanan Proyek 2">
+                <li class="tech-tag">IoT Security Hardening</li>
+                <li class="tech-tag">TLS &amp; Constant-Time Auth</li>
+                <li class="tech-tag">Argon2id &amp; RBAC</li>
+                <li class="tech-tag">Edge Device Whitelisting</li>
+                <li class="tech-tag">Rate Limiting &amp; Secret Rotation</li>
+              </ul>
+
+              <div class="project-links">
+                <a href="https://github.com/mochmizan/proyek-monitoring-dtedi.git" target="_blank" rel="noopener noreferrer" class="btn-pill btn-dark btn-sm">
+                  <span data-i18n="work.viewRepo">Lihat Repository Tim</span>
+                  <svg class="icon-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROYEK 3: NetPulse (On Progress — Tanpa Penjelasan Detail Sesuai Instruksi) -->
+          <article class="project-card project-card-wip" aria-labelledby="proj-3-title">
+            <div class="project-card-top">
+              <span class="project-number">PROYEK 03 • COLLABORATION</span>
+              <span class="project-status status-progress">
+                <span class="pulse-dot" aria-hidden="true"></span>
+                <span data-i18n="work.p3Status">Sedang On Progress</span>
+              </span>
+            </div>
+
+            <div class="project-visual visual-wip" aria-hidden="true">
+              <div class="wip-badge-box">
+                <span class="wip-mono">TEAM COLLABORATION • IN PROGRESS</span>
+                <span class="wip-title">NetPulse</span>
+              </div>
+              <span class="visual-caption">Contributor: @Haikalhid</span>
+            </div>
+
+            <div class="project-body">
+              <h3 id="proj-3-title" class="project-title">NetPulse</h3>
+              <p class="project-role-tag" data-i18n="work.p3Role">Proyek Kolaborasi Tim • Kontributor: @Haikalhid</p>
+              <p class="project-description wip-text" data-i18n="work.p3Desc">
+                Proyek kolaborasi ini saat ini sedang dalam tahap pengerjaan (On Progress).
+              </p>
+              <p class="project-collab-meta">
+                <span data-i18n="work.repoOwnerLabel">Repositori Tim:</span>
+                <code>FadliSutaji/NetPulse</code>
+              </p>
+            </div>
+
+            <div class="project-meta">
+              <ul class="tag-list" aria-label="Status Proyek 3">
+                <li class="tech-tag">Team Collaboration</li>
+                <li class="tech-tag">On Progress</li>
+              </ul>
+
+              <div class="project-links">
+                <a href="https://github.com/FadliSutaji/NetPulse.git" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline btn-sm">
+                  <span data-i18n="work.viewRepo">Lihat Repository Tim</span>
+                  <svg class="icon-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE COMPETENCIES / SERVICES SECTION (Service [04]) -->
+    <section id="services" class="section services-section scroll-reveal" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-top-bar">
+          <div>
+            <span class="mono-index">03 / SERVICE &amp; FOCUS [04]</span>
+            <h2 id="services-heading" class="section-title" data-i18n="services.title">Bidang Keahlian Utama</h2>
+          </div>
+          <p class="section-subtitle" data-i18n="services.subtitle">
+            Kombinasi keahlian teknis di bidang infrastruktur jaringan, keamanan siber, pemrograman, dan penjaminan kualitas data.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <span class="service-index">01</span>
+            <h3 class="service-title" data-i18n="services.s1Title">Network Operations &amp; MikroTik</h3>
+            <p class="service-desc" data-i18n="services.s1Desc">
+              Pemantauan infrastruktur jaringan skala besar (NOC) di wilayah 3T, konfigurasi router MikroTik, administrasi sistem Linux, analisis insiden konektivitas, dan pelaporan status operasional harian.
+            </p>
+            <ul class="tag-list">
+              <li class="tech-tag">NOC Monitoring</li>
+              <li class="tech-tag">MikroTik Configuration</li>
+              <li class="tech-tag">Linux Administration</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <span class="service-index">02</span>
+            <h3 class="service-title" data-i18n="services.s2Title">Cybersecurity &amp; IoT Security</h3>
+            <p class="service-desc" data-i18n="services.s2Desc">
+              Penguatan keamanan sistem Internet of Things (IoT), autentikasi kriptografis antar-gateway, manajemen kontrol akses (RBAC), pengamanan sesi pengguna, dan mitigasi celah keamanan jaringan.
+            </p>
+            <ul class="tag-list">
+              <li class="tech-tag">Basic Cybersecurity</li>
+              <li class="tech-tag">IoT Hardening</li>
+              <li class="tech-tag">Auth &amp; Access Control</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <span class="service-index">03</span>
+            <h3 class="service-title" data-i18n="services.s3Title">AI Integration &amp; Web Development</h3>
+            <p class="service-desc" data-i18n="services.s3Desc">
+              Pengembangan aplikasi web dan prototipe berbasis kecerdasan buatan menggunakan Python, JavaScript, HTML, PHP, serta pemrograman basis data untuk sistem pemantauan dan kontrol cerdas.
+            </p>
+            <ul class="tag-list">
+              <li class="tech-tag">Python &amp; JavaScript</li>
+              <li class="tech-tag">HTML &amp; PHP</li>
+              <li class="tech-tag">Database Programming</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <span class="service-index">04</span>
+            <h3 class="service-title" data-i18n="services.s4Title">Data QA &amp; Technical Coordination</h3>
+            <p class="service-desc" data-i18n="services.s4Desc">
+              Pembersihan, validasi, dan standarisasi ribuan data produk multi-marketplace untuk analisis pasar, didukung kemampuan komunikasi publik, manajemen acara teknologi, dan kolaborasi lintas divisi.
+            </p>
+            <ul class="tag-list">
+              <li class="tech-tag">Data Quality Assurance</li>
+              <li class="tech-tag">Dataset Structuring</li>
+              <li class="tech-tag">Public Relations &amp; Event Ops</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & ORGANIZATION SECTION (Experience [06]) -->
+    <section id="experience" class="section experience-section scroll-reveal" aria-labelledby="experience-heading">
+      <div class="container">
+        <div class="section-top-bar">
+          <div>
+            <span class="mono-index">04 / EXPERIENCE &amp; LEADERSHIP [06]</span>
+            <h2 id="experience-heading" class="section-title" data-i18n="exp.title">Pengalaman Profesional &amp; Organisasi</h2>
+          </div>
+
+          <div class="filter-bar" role="group" aria-label="Filter kategori pengalaman">
+            <button type="button" class="filter-btn active" data-exp-filter="all" data-i18n="exp.filterAll">Semua [06]</button>
+            <button type="button" class="filter-btn" data-exp-filter="professional" data-i18n="exp.filterPro">Profesional [02]</button>
+            <button type="button" class="filter-btn" data-exp-filter="organization" data-i18n="exp.filterOrg">Organisasi &amp; Komunitas [04]</button>
+          </div>
+        </div>
+
+        <div class="timeline-list" id="experience-list">
+          <!-- 1. Trippo Amerta Bhumi -->
+          <article class="timeline-item" data-exp-category="professional">
+            <div class="timeline-meta">
+              <span class="timeline-badge badge-pro" data-i18n="exp.badgePro">Professional</span>
+              <span class="timeline-date">Sep 2026 – Des 2026</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Network Operations Center (NOC)</h3>
+                <p class="timeline-org">Trippo Amerta Bhumi</p>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp.trippo1">Memantau 475 titik jaringan (network sites) setiap hari di wilayah 3T (Terdepan, Terluar, dan Tertinggal), serta mengidentifikasi 5–20 titik yang mengalami gangguan baru per hari untuk tindak lanjut segera.</li>
+                <li data-i18n="exp.trippo2">Mendukung teknisi lapangan di 13 klaster dalam menangani pemecahan masalah (troubleshooting) gangguan titik jaringan, berkontribusi sebagai bagian dari tim NOC untuk memulihkan 50–100 titik kembali online.</li>
+                <li data-i18n="exp.trippo3">Menyusun laporan status titik jaringan dua kali sehari (pagi dan sore) yang mencakup titik aktif (up) dan gangguan (down) guna memastikan tim serta pemangku kepentingan selalu mendapatkan informasi terkini.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 2. Magpie IQ -->
+          <article class="timeline-item" data-exp-category="professional">
+            <div class="timeline-meta">
+              <span class="timeline-badge badge-pro" data-i18n="exp.badgePro">Professional</span>
+              <span class="timeline-date">Agu 2025 – Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Freelance QA Labelling</h3>
+                <p class="timeline-org">Magpie IQ</p>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp.magpie1">Membersihkan, menyortir, dan menstandarisasi 300–1.000 daftar produk (product listings) per bulan dari 4 marketplace utama (Shopee, Tokopedia, Lazada, dan TikTok Shop) melalui platform Magpie.</li>
+                <li data-i18n="exp.magpie2">Memverifikasi dan memvalidasi nama produk, harga, serta kategori di lebih dari 50 brand untuk menjamin konsistensi dan akurasi data.</li>
+                <li data-i18n="exp.magpie3">Mengonversi data mentah menjadi format terstruktur pada 3 kategori produk untuk mendukung analisis pasar klien.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 3. FORKOM TRI SV UGM -->
+          <article class="timeline-item" data-exp-category="organization">
+            <div class="timeline-meta">
+              <span class="timeline-badge badge-org" data-i18n="exp.badgeOrg">Organization</span>
+              <span class="timeline-date" data-i18n="exp.forkomDate">Mei 2025 – Sekarang</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Public Relations Division Staff</h3>
+                <p class="timeline-org">Forum Komunikasi (FORKOM) TRI SV UGM</p>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp.forkom1">Melaksanakan kunjungan studi banding (benchmarking) dengan organisasi mahasiswa TI di berbagai universitas mitra untuk bertukar praktik terbaik kelembagaan dan memperluas jejaring eksternal.</li>
+                <li data-i18n="exp.forkom2">Menyelenggarakan webinar berbagi pengalaman alumni secara daring bekerja sama dengan Divisi Kajian Strategis dan Advokasi (Kastrad) untuk memfasilitasi bimbingan serta wawasan karier.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 4. openSUSE Asia Summit 2026 -->
+          <article class="timeline-item" data-exp-category="organization">
+            <div class="timeline-meta">
+              <span class="timeline-badge badge-org" data-i18n="exp.badgeOrg">International Event</span>
+              <span class="timeline-date">Apr 2026 – Okt 2026</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Volunteer Public Relations Staff (LO &amp; Master of Ceremony)</h3>
+                <p class="timeline-org">openSUSE Asia Summit 2026</p>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp.opensuse1">Bertugas sebagai Liaison Officer (LO) bagi para pembicara, mendampingi jadwal, lokasi venue, serta logistik acara, sekaligus mendukung operasional ruang pembicara sebagai pencatat waktu (timekeeper).</li>
+                <li data-i18n="exp.opensuse2">Bertugas sebagai Master of Ceremony (MC) pada Hari ke-2, memandu jalannya rangkaian acara dan membangun interaksi dengan audiens internasional.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 5. NETCOMP 4.0 -->
+          <article class="timeline-item" data-exp-category="organization">
+            <div class="timeline-meta">
+              <span class="timeline-badge badge-org" data-i18n="exp.badgeOrg">National Competition</span>
+              <span class="timeline-date">Okt 2025 – Feb 2026</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Event Division Sub-Coordinator</h3>
+                <p class="timeline-org">National Networking Competition (NETCOMP) 4.0</p>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp.netcomp1">Merancang susunan acara (rundown) dan mengelola keseluruhan alur NetClass, rangkaian lokakarya (workshop series) di bawah naungan NETCOMP 4.0.</li>
+                <li data-i18n="exp.netcomp2">Berkoordinasi dengan moderator, divisi IT (pengaturan lingkungan Zoom), dan divisi KSK (distribusi e-sertifikat) untuk memastikan kelancaran sesi bagi seluruh peserta.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 6. OpenInfra Days Indonesia 2025 -->
+          <article class="timeline-item" data-exp-category="organization">
+            <div class="timeline-meta">
+              <span class="timeline-badge badge-org" data-i18n="exp.badgeOrg">Tech Community</span>
+              <span class="timeline-date">Feb 2025 – Jul 2025</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Volunteer Technical Staff</h3>
+                <p class="timeline-org">OpenInfra Days Indonesia 2025</p>
+              </div>
+              <ul class="timeline-bullets">
+                <li data-i18n="exp.openinfra1">Membantu menyiapkan dan mengelola peralatan teknis untuk mendukung kelancaran jalannya sesi-sesi seminar.</li>
+                <li data-i18n="exp.openinfra2">Berperan aktif selama acara utama dengan menjaga keamanan area venue serta bertugas sebagai timekeeper bagi pembicara workshop sebelum dan sesudah sesi berlangsung.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & SKILLS SECTION -->
+    <section id="education" class="section education-section scroll-reveal" aria-labelledby="education-heading">
+      <div class="container">
+        <div class="edu-skills-grid">
+          <!-- Left Column: Education -->
+          <div class="education-col">
+            <span class="mono-index">05 / EDUCATION</span>
+            <h2 id="education-heading" class="section-title" data-i18n="edu.title">Riwayat Pendidikan</h2>
+
+            <div class="edu-cards">
+              <article class="edu-card">
+                <div class="edu-card-header">
+                  <div>
+                    <h3 class="edu-school">Universitas Gadjah Mada (UGM)</h3>
+                    <p class="edu-degree" data-i18n="edu.ugmDegree">Sarjana Terapan (D4), Teknologi Rekayasa Internet</p>
+                  </div>
+                  <span class="edu-period" data-i18n="edu.ugmPeriod">Agu 2024 – Sekarang</span>
+                </div>
+                <div class="edu-gpa-badge">GPA: 3.71 / 4.00</div>
+                <p class="edu-detail">
+                  <strong data-i18n="edu.courseworkLabel">Mata Kuliah Relevan:</strong>
+                  <span data-i18n="edu.ugmCourses">Cybersecurity, Cloud Computing, Network Administration, Internet of Things.</span>
+                </p>
+                <p class="edu-detail">
+                  <strong data-i18n="edu.projectLabel">Proyek Akademik:</strong>
+                  <span data-i18n="edu.ugmProjects">Pengembangan SAPA (Smart Access Prototyping Application), Penguatan Keamanan untuk Sistem Monitoring Gedung Pintar (Smart Building Monitoring Systems).</span>
+                </p>
+              </article>
+
+              <article class="edu-card">
+                <div class="edu-card-header">
+                  <div>
+                    <h3 class="edu-school">SMAN 1 Cisaat</h3>
+                    <p class="edu-degree" data-i18n="edu.smaDegree">Program Ilmu Pengetahuan Alam (MIPA)</p>
+                  </div>
+                  <span class="edu-period">Jul 2021 – Jul 2024</span>
+                </div>
+                <div class="edu-gpa-badge">Nilai Rata-rata: 8.90</div>
+                <p class="edu-detail">
+                  <strong data-i18n="edu.courseworkLabel">Mata Pelajaran Relevan:</strong>
+                  <span data-i18n="edu.smaCourses">Matematika Lanjut, Fisika, Kimia, Biologi, Statistika.</span>
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Right Column: Skills & Competencies -->
+          <div class="skills-col">
+            <span class="mono-index">06 / COMPETENCIES</span>
+            <h2 class="section-title" data-i18n="skills.title">Keahlian &amp; Bahasa</h2>
+
+            <div class="skills-groups">
+              <div class="skill-box">
+                <h3 class="skill-box-title" data-i18n="skills.techTitle">Technical Skills</h3>
+                <ul class="tag-list">
+                  <li class="skill-pill">Python</li>
+                  <li class="skill-pill">JavaScript</li>
+                  <li class="skill-pill">Basic Cybersecurity</li>
+                  <li class="skill-pill">IoT Security Enhancement</li>
+                  <li class="skill-pill">Linux Administration</li>
+                  <li class="skill-pill">MikroTik Router Configuration</li>
+                  <li class="skill-pill">Network Monitoring &amp; Operations</li>
+                  <li class="skill-pill">HTML, PHP &amp; Database Programming</li>
+                  <li class="skill-pill">Microsoft Office (Word, PowerPoint, Excel)</li>
+                </ul>
+              </div>
+
+              <div class="skill-box">
+                <h3 class="skill-box-title" data-i18n="skills.softTitle">Soft Skills</h3>
+                <ul class="tag-list">
+                  <li class="skill-pill" data-i18n="skills.s1">Adaptability &amp; Rapid Learning</li>
+                  <li class="skill-pill" data-i18n="skills.s2">Critical Thinking &amp; Problem-Solving</li>
+                  <li class="skill-pill" data-i18n="skills.s3">Teamwork &amp; Cross-Functional Collaboration</li>
+                  <li class="skill-pill" data-i18n="skills.s4">Time Management &amp; Self-Discipline</li>
+                </ul>
+              </div>
+
+              <div class="skill-box">
+                <h3 class="skill-box-title" data-i18n="skills.langTitle">Bahasa (Languages)</h3>
+                <div class="language-bars">
+                  <div class="lang-item">
+                    <span class="lang-name">Bahasa Indonesia</span>
+                    <span class="lang-level" data-i18n="skills.langId">Native Speaker</span>
+                  </div>
+                  <div class="lang-item">
+                    <span class="lang-name">English</span>
+                    <span class="lang-level" data-i18n="skills.langEn">Conversational</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER / CONTACT SECTION -->
+  <footer id="contact" class="site-footer" aria-labelledby="footer-heading">
+    <div class="container">
+      <div class="footer-cta-block">
+        <span class="mono-index footer-mono">07 / GET IN TOUCH</span>
+        <h2 id="footer-heading" class="footer-display-title" data-i18n="contact.title">
+          Mari Berkolaborasi pada Proyek Berikutnya.
+        </h2>
+        <p class="footer-subtitle" data-i18n="contact.subtitle">
+          Terbuka untuk kesempatan magang, riset keamanan IoT &amp; jaringan, pengembangan sistem AI, maupun kolaborasi proyek teknologi.
+        </p>
+
+        <div class="footer-actions">
+          <a href="mailto:haikalhidayat52@gmail.com" class="btn-pill btn-light btn-lg">
+            <span>haikalhidayat52@gmail.com</span>
+            <svg class="icon-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+
+          <a href="https://wa.me/6287888451327" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline-light btn-lg">
+            <span>WhatsApp: (+62) 878-8845-1327</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/muhammad-haikal-hidayat/" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline-light btn-lg">
+            <span>LinkedIn Profile</span>
+          </a>
+
+          <a href="https://github.com/Haikalhid" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline-light btn-lg">
+            <span>GitHub: @Haikalhid</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">
+          &copy; 2026 Muhammad Haikal Hidayat. Internet Engineering Technology — Universitas Gadjah Mada.
+        </p>
+        <a href="#top" class="back-to-top" data-i18n="contact.backToTop">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Native Modal Dialog for Quick Contact ("Let's Talk") -->
+  <dialog id="contact-dialog" class="contact-dialog" closedby="any" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-header">
+        <div>
+          <span class="mono-index">DIRECT CONTACT</span>
+          <h2 id="dialog-title" class="dialog-title" data-i18n="modal.title">Hubungi Muhammad Haikal</h2>
+        </div>
+        <form method="dialog">
+          <button type="submit" value="cancel" class="dialog-close" aria-label="Tutup dialog">✕</button>
+        </form>
+      </div>
+
+      <p class="dialog-desc" data-i18n="modal.desc">
+        Pilih jalur komunikasi langsung atau tulis pesan singkat di bawah untuk dikirimkan via Email atau WhatsApp.
+      </p>
+
+      <div class="quick-contact-cards">
+        <a href="mailto:haikalhidayat52@gmail.com" class="quick-contact-item">
+          <span class="qc-label">Email</span>
+          <span class="qc-value">haikalhidayat52@gmail.com</span>
+        </a>
+        <a href="https://wa.me/6287888451327" target="_blank" rel="noopener noreferrer" class="quick-contact-item">
+          <span class="qc-label">Phone / WhatsApp</span>
+          <span class="qc-value">(+62) 878-8845-1327</span>
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-haikal-hidayat/" target="_blank" rel="noopener noreferrer" class="quick-contact-item">
+          <span class="qc-label">LinkedIn</span>
+          <span class="qc-value">linkedin.com/in/muhammad-haikal-hidayat/</span>
+        </a>
+        <a href="https://github.com/Haikalhid" target="_blank" rel="noopener noreferrer" class="quick-contact-item">
+          <span class="qc-label">GitHub</span>
+          <span class="qc-value">github.com/Haikalhid</span>
+        </a>
+      </div>
+
+      <form id="quick-message-form" class="dialog-form">
+        <div class="form-field">
+          <label for="sender-name" data-i18n="modal.nameLabel">Nama Anda</label>
+          <input type="text" id="sender-name" name="name" autocomplete="name" required placeholder="Nama / Instansi">
+        </div>
+        <div class="form-field">
+          <label for="sender-email" data-i18n="modal.emailLabel">Email Anda</label>
+          <input type="email" id="sender-email" name="email" inputmode="email" autocomplete="email" required placeholder="nama@email.com">
+        </div>
+        <div class="form-field">
+          <label for="sender-message" data-i18n="modal.msgLabel">Pesan / Topik Kolaborasi</label>
+          <textarea id="sender-message" name="message" rows="3" required placeholder="Halo Haikal, saya tertarik berdiskusi mengenai..."></textarea>
+        </div>
+        <div class="dialog-form-actions">
+          <button type="submit" data-channel="whatsapp" class="btn-pill btn-dark">
+            <span data-i18n="modal.sendWa">Kirim via WhatsApp ↗</span>
+          </button>
+          <button type="submit" data-channel="email" class="btn-pill btn-outline">
+            <span data-i18n="modal.sendEmail">Buka di Email Client</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
