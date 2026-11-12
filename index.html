@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muhammad Haikal Hidayat — Internet Engineering, AI &amp; Cybersecurity Portfolio</title>
-  <meta name="description" content="Portofolio resmi Muhammad Haikal Hidayat — Mahasiswa Sarjana Terapan Teknologi Rekayasa Internet Universitas Gadjah Mada (UGM) dengan fokus pada Cybersecurity, IoT Security, Artificial Intelligence, dan Network Operations.">
+  <title>Muhammad Haikal Hidayat — Cloud, Network, AI &amp; Cybersecurity Portfolio</title>
+  <meta name="description" content="Portofolio resmi Muhammad Haikal Hidayat — Mahasiswa Sarjana Terapan Teknologi Rekayasa Internet Universitas Gadjah Mada (UGM) dengan minat di bidang Cloud, Network, AI, dan Cybersecurity.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -13,16 +13,30 @@
 <body>
   <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
 
-  <!-- Top Navigation Header (Inspired by Dymas Alfin Reference) -->
-  <header class="site-header" id="top">
+  <!-- Top Navigation Header (Responsive Navbar + Auto-Hide on Scroll Down) -->
+  <header class="site-header is-wide" id="top">
     <div class="header-inner">
-      <div class="availability-pill" role="status" aria-live="polite">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span data-i18n="nav.available">Available for New Project</span>
-      </div>
+      <a href="#top" class="site-logo" aria-label="Muhammad Haikal Hidayat — Beranda">
+        Haikal<span class="logo-dot">.</span>
+      </a>
 
       <nav class="primary-nav" aria-label="Navigasi Utama">
-        <ul class="nav-list">
+        <button
+          class="menu-button"
+          type="button"
+          popovertarget="site-menu"
+          popovertargetaction="toggle"
+          aria-controls="site-menu"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="7" x2="20" y2="7"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="17" x2="14" y2="17"></line>
+          </svg>
+          <span data-i18n="nav.menu">Menu</span>
+        </button>
+
+        <ul id="site-menu" class="nav-list site-menu">
           <li>
             <a href="#work" class="nav-link">
               <span data-i18n="nav.work">Work</span>
@@ -42,10 +56,10 @@
             </a>
           </li>
           <li>
-            <a href="#education" class="nav-link">
-              <span data-i18n="nav.education">Education</span>
-              <span class="nav-count">[UGM]</span>
-            </a>
+            <a href="#education" class="nav-link" data-i18n="nav.education">Education</a>
+          </li>
+          <li>
+            <a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a>
           </li>
           <li>
             <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
@@ -60,7 +74,7 @@
           <span class="lang-option" data-lang-indicator="en">EN</span>
         </button>
 
-        <button type="button" class="btn-pill btn-dark" id="open-contact-modal">
+        <button type="button" class="btn-pill btn-dark btn-header-cta" id="open-contact-modal">
           <span data-i18n="nav.letsTalk">Let's Talk</span>
           <svg class="icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -72,32 +86,33 @@
   </header>
 
   <main id="main-content">
-    <!-- HERO SECTION (Reference Layout: Outlined + Solid Giant Name, Centered Portrait, Left Bio/CTA, Right Social Pills) -->
+    <!-- HERO SECTION -->
     <section class="hero-section" aria-labelledby="hero-heading">
       <div class="hero-container">
         <p class="hero-eyebrow">
           <span class="mono-tag">MUHAMMAD HAIKAL HIDAYAT</span>
           <span class="eyebrow-sep" aria-hidden="true">•</span>
-          <span data-i18n="hero.univ">Teknologi Rekayasa Internet — Universitas Gadjah Mada (GPA 3.71/4.00)</span>
+          <span data-i18n="hero.univ">Teknologi Rekayasa Internet — Universitas Gadjah Mada</span>
         </p>
 
-        <!-- Giant Display Headline matching DYMAS ALFIN reference -->
+        <!-- Giant Display Headline -->
         <h1 id="hero-heading" class="hero-display-name" aria-label="Muhammad Haikal Hidayat">
           <span class="display-outline">HAIKAL</span>
           <span class="display-solid">HIDAYAT</span>
         </h1>
 
         <div class="hero-stage">
-          <!-- Left Column: Title, Tagline, CTA -->
+          <!-- Left Column: Title, Tagline, CTA (Interests ordered: Cloud, Network, AI, Cyber) -->
           <div class="hero-left">
             <div class="role-badge-group">
-              <span class="role-chip" data-i18n="hero.chip1">Cybersecurity &amp; IoT Security</span>
-              <span class="role-chip" data-i18n="hero.chip2">Network Operations</span>
-              <span class="role-chip" data-i18n="hero.chip3">AI Enthusiast</span>
+              <span class="role-chip" data-i18n="hero.chip1">Cloud</span>
+              <span class="role-chip" data-i18n="hero.chip2">Network</span>
+              <span class="role-chip" data-i18n="hero.chip3">AI</span>
+              <span class="role-chip" data-i18n="hero.chip4">Cybersecurity</span>
             </div>
-            <h2 class="hero-role" data-i18n="hero.role">Internet Engineering &amp; Security</h2>
+            <h2 class="hero-role" data-i18n="hero.role">Internet Engineering Technology</h2>
             <p class="hero-tagline" data-i18n="hero.tagline">
-              Mahasiswa Teknologi Rekayasa Internet UGM yang berfokus pada pengembangan keamanan sistem IoT, operasional jaringan berskala nasional (NOC), dan integrasi kecerdasan buatan.
+              Mahasiswa Teknologi Rekayasa Internet UGM dengan minat dan fokus di bidang Cloud, Network, Artificial Intelligence, serta Cybersecurity.
             </p>
             <div class="hero-cta-group">
               <a href="#work" class="btn-pill btn-dark btn-lg">
@@ -130,12 +145,12 @@
                   width="460"
                   height="460"
                   role="img"
-                  aria-label="Objek 3D geometris abstrak berlapis yang merepresentasikan jaringan, keamanan siber, dan kecerdasan buatan"
+                  aria-label="Objek 3D geometris abstrak berlapis yang merepresentasikan Cloud, Network, AI, dan Cybersecurity"
                 ></canvas>
               </div>
 
               <div class="geo-stage-footer" aria-hidden="true">
-                <span class="geo-pill">AI • IOT • SEC</span>
+                <span class="geo-pill">CLOUD • NET • AI • CYBER</span>
                 <span class="geo-status-indicator">
                   <span class="geo-dot"></span>
                   <span>ACTIVE TOPOLOGY</span>
@@ -144,7 +159,7 @@
             </div>
           </div>
 
-          <!-- Right Column: Vertical Social & Contact Pill Stack matching reference -->
+          <!-- Right Column: Vertical Social & Contact Pill Stack -->
           <div class="hero-right" aria-label="Tautan Sosial dan Kontak">
             <a href="https://www.linkedin.com/in/muhammad-haikal-hidayat/" target="_blank" rel="noopener noreferrer" class="social-pill">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -182,7 +197,7 @@
       </div>
     </section>
 
-    <!-- ABOUT & KEY METRICS SECTION -->
+    <!-- ABOUT & KEY METRICS SECTION (IPK 3.71/4.00 ONLY inside the metric card box) -->
     <section id="about" class="section about-section scroll-reveal" aria-labelledby="about-heading">
       <div class="container">
         <div class="section-header-grid">
@@ -192,7 +207,7 @@
           </div>
           <div class="about-narrative">
             <p class="lead-paragraph" data-i18n="about.lead">
-              Mahasiswa Sarjana Terapan Teknologi Rekayasa Internet di Universitas Gadjah Mada (IPK 3.71/4.00) dengan minat kuat di bidang Artificial Intelligence dan Cybersecurity.
+              Mahasiswa Sarjana Terapan Teknologi Rekayasa Internet di Universitas Gadjah Mada dengan minat kuat di bidang Cloud, Network, Artificial Intelligence, dan Cybersecurity.
             </p>
             <p class="body-paragraph" data-i18n="about.body">
               Saya memiliki pengalaman langsung dalam operasional jaringan (Network Operations Center), memantau ratusan titik jaringan di wilayah 3T (Terdepan, Terluar, Tertinggal), mendukung teknisi lapangan dalam pemecahan masalah (troubleshooting), serta menyusun laporan status harian. Selain itu, saya berpengalaman dalam penjaminan kualitas data (Data QA), membersihkan, memvalidasi, dan menstrukturkan data marketplace untuk mendukung analisis klien. Melalui keterlibatan aktif di organisasi kemahasiswaan dan konferensi teknologi internasional, saya terus mengasah kemampuan kolaborasi tim, komunikasi profesional, dan koordinasi acara.
@@ -234,10 +249,10 @@
         <div class="section-top-bar">
           <div>
             <span class="mono-index">02 / SELECTED WORK [03]</span>
-            <h2 id="work-heading" class="section-title" data-i18n="work.title">Proyek Unggulan</h2>
+            <h2 id="work-heading" class="section-title" data-i18n="work.title">Proyek Kolaborasi &amp; Kontribusi</h2>
           </div>
           <p class="section-subtitle" data-i18n="work.subtitle">
-            Implementasi nyata pada sistem akses berbasis AI, penguatan keamanan infrastruktur IoT, dan pengembangan perangkat jaringan.
+            Proyek kolaborasi tim di mana saya (@Haikalhid) berkontribusi pada sistem akses berbasis AI, penguatan keamanan infrastruktur IoT, dan pengembangan perangkat jaringan.
           </p>
         </div>
 
@@ -394,69 +409,69 @@
       </div>
     </section>
 
-    <!-- CORE COMPETENCIES / SERVICES SECTION (Service [04]) -->
+    <!-- CORE COMPETENCIES / SERVICES SECTION (Ordered: Cloud, Network, AI, Cyber) -->
     <section id="services" class="section services-section scroll-reveal" aria-labelledby="services-heading">
       <div class="container">
         <div class="section-top-bar">
           <div>
             <span class="mono-index">03 / SERVICE &amp; FOCUS [04]</span>
-            <h2 id="services-heading" class="section-title" data-i18n="services.title">Bidang Keahlian Utama</h2>
+            <h2 id="services-heading" class="section-title" data-i18n="services.title">Bidang Minat &amp; Keahlian Utama</h2>
           </div>
           <p class="section-subtitle" data-i18n="services.subtitle">
-            Kombinasi keahlian teknis di bidang infrastruktur jaringan, keamanan siber, pemrograman, dan penjaminan kualitas data.
+            Berfokus pada empat pilar utama: Cloud Computing, Network Operations, Artificial Intelligence, dan Cybersecurity.
           </p>
         </div>
 
         <div class="services-grid">
           <article class="service-card">
             <span class="service-index">01</span>
-            <h3 class="service-title" data-i18n="services.s1Title">Network Operations &amp; MikroTik</h3>
+            <h3 class="service-title" data-i18n="services.s1Title">Cloud &amp; Linux Infrastructure</h3>
             <p class="service-desc" data-i18n="services.s1Desc">
-              Pemantauan infrastruktur jaringan skala besar (NOC) di wilayah 3T, konfigurasi router MikroTik, administrasi sistem Linux, analisis insiden konektivitas, dan pelaporan status operasional harian.
+              Pengelolaan sistem berbasis Linux Administration, arsitektur layanan Cloud Computing, kontainerisasi aplikasi, serta pengoperasian infrastruktur terdistribusi yang andal.
             </p>
             <ul class="tag-list">
-              <li class="tech-tag">NOC Monitoring</li>
-              <li class="tech-tag">MikroTik Configuration</li>
+              <li class="tech-tag">Cloud Computing</li>
               <li class="tech-tag">Linux Administration</li>
+              <li class="tech-tag">Infrastructure Ops</li>
             </ul>
           </article>
 
           <article class="service-card">
             <span class="service-index">02</span>
-            <h3 class="service-title" data-i18n="services.s2Title">Cybersecurity &amp; IoT Security</h3>
+            <h3 class="service-title" data-i18n="services.s2Title">Network Operations &amp; MikroTik</h3>
             <p class="service-desc" data-i18n="services.s2Desc">
-              Penguatan keamanan sistem Internet of Things (IoT), autentikasi kriptografis antar-gateway, manajemen kontrol akses (RBAC), pengamanan sesi pengguna, dan mitigasi celah keamanan jaringan.
+              Pemantauan infrastruktur jaringan skala besar (NOC) di wilayah 3T, konfigurasi router MikroTik, analisis insiden konektivitas lintas klaster, dan pelaporan operasional harian.
             </p>
             <ul class="tag-list">
-              <li class="tech-tag">Basic Cybersecurity</li>
-              <li class="tech-tag">IoT Hardening</li>
-              <li class="tech-tag">Auth &amp; Access Control</li>
+              <li class="tech-tag">NOC Monitoring</li>
+              <li class="tech-tag">MikroTik Configuration</li>
+              <li class="tech-tag">Network Administration</li>
             </ul>
           </article>
 
           <article class="service-card">
             <span class="service-index">03</span>
-            <h3 class="service-title" data-i18n="services.s3Title">AI Integration &amp; Web Development</h3>
+            <h3 class="service-title" data-i18n="services.s3Title">Artificial Intelligence &amp; Data QA</h3>
             <p class="service-desc" data-i18n="services.s3Desc">
-              Pengembangan aplikasi web dan prototipe berbasis kecerdasan buatan menggunakan Python, JavaScript, HTML, PHP, serta pemrograman basis data untuk sistem pemantauan dan kontrol cerdas.
+              Integrasi model kecerdasan buatan pada sistem otomasi dan web menggunakan Python &amp; JavaScript, disertai penjaminan kualitas, validasi, serta strukturisasi ribuan data produk.
             </p>
             <ul class="tag-list">
+              <li class="tech-tag">AI Integration</li>
               <li class="tech-tag">Python &amp; JavaScript</li>
-              <li class="tech-tag">HTML &amp; PHP</li>
-              <li class="tech-tag">Database Programming</li>
+              <li class="tech-tag">Data Quality Assurance</li>
             </ul>
           </article>
 
           <article class="service-card">
             <span class="service-index">04</span>
-            <h3 class="service-title" data-i18n="services.s4Title">Data QA &amp; Technical Coordination</h3>
+            <h3 class="service-title" data-i18n="services.s4Title">Cybersecurity &amp; IoT Security</h3>
             <p class="service-desc" data-i18n="services.s4Desc">
-              Pembersihan, validasi, dan standarisasi ribuan data produk multi-marketplace untuk analisis pasar, didukung kemampuan komunikasi publik, manajemen acara teknologi, dan kolaborasi lintas divisi.
+              Penguatan keamanan sistem Internet of Things (IoT), autentikasi kriptografis antar-gateway, manajemen kontrol akses (RBAC), pengamanan sesi pengguna, dan mitigasi celah keamanan.
             </p>
             <ul class="tag-list">
-              <li class="tech-tag">Data Quality Assurance</li>
-              <li class="tech-tag">Dataset Structuring</li>
-              <li class="tech-tag">Public Relations &amp; Event Ops</li>
+              <li class="tech-tag">Cybersecurity</li>
+              <li class="tech-tag">IoT Hardening</li>
+              <li class="tech-tag">Auth &amp; Access Control</li>
             </ul>
           </article>
         </div>
@@ -611,10 +626,9 @@
                   </div>
                   <span class="edu-period" data-i18n="edu.ugmPeriod">Agu 2024 – Sekarang</span>
                 </div>
-                <div class="edu-gpa-badge">GPA: 3.71 / 4.00</div>
                 <p class="edu-detail">
                   <strong data-i18n="edu.courseworkLabel">Mata Kuliah Relevan:</strong>
-                  <span data-i18n="edu.ugmCourses">Cybersecurity, Cloud Computing, Network Administration, Internet of Things.</span>
+                  <span data-i18n="edu.ugmCourses">Cloud Computing, Network Administration, Artificial Intelligence, Cybersecurity, Internet of Things.</span>
                 </p>
                 <p class="edu-detail">
                   <strong data-i18n="edu.projectLabel">Proyek Akademik:</strong>
@@ -630,7 +644,6 @@
                   </div>
                   <span class="edu-period">Jul 2021 – Jul 2024</span>
                 </div>
-                <div class="edu-gpa-badge">Nilai Rata-rata: 8.90</div>
                 <p class="edu-detail">
                   <strong data-i18n="edu.courseworkLabel">Mata Pelajaran Relevan:</strong>
                   <span data-i18n="edu.smaCourses">Matematika Lanjut, Fisika, Kimia, Biologi, Statistika.</span>
@@ -639,22 +652,22 @@
             </div>
           </div>
 
-          <!-- Right Column: Skills & Competencies -->
-          <div class="skills-col">
-            <span class="mono-index">06 / COMPETENCIES</span>
+          <!-- Right Column: Skills & Competencies (Linked from #skills in Navbar) -->
+          <div id="skills" class="skills-col">
+            <span class="mono-index">06 / SKILLS &amp; COMPETENCIES</span>
             <h2 class="section-title" data-i18n="skills.title">Keahlian &amp; Bahasa</h2>
 
             <div class="skills-groups">
               <div class="skill-box">
                 <h3 class="skill-box-title" data-i18n="skills.techTitle">Technical Skills</h3>
                 <ul class="tag-list">
+                  <li class="skill-pill">Linux Administration</li>
+                  <li class="skill-pill">Network Monitoring &amp; Operations</li>
+                  <li class="skill-pill">MikroTik Router Configuration</li>
                   <li class="skill-pill">Python</li>
                   <li class="skill-pill">JavaScript</li>
                   <li class="skill-pill">Basic Cybersecurity</li>
                   <li class="skill-pill">IoT Security Enhancement</li>
-                  <li class="skill-pill">Linux Administration</li>
-                  <li class="skill-pill">MikroTik Router Configuration</li>
-                  <li class="skill-pill">Network Monitoring &amp; Operations</li>
                   <li class="skill-pill">HTML, PHP &amp; Database Programming</li>
                   <li class="skill-pill">Microsoft Office (Word, PowerPoint, Excel)</li>
                 </ul>
@@ -699,7 +712,7 @@
           Mari Berkolaborasi pada Proyek Berikutnya.
         </h2>
         <p class="footer-subtitle" data-i18n="contact.subtitle">
-          Terbuka untuk kesempatan magang, riset keamanan IoT &amp; jaringan, pengembangan sistem AI, maupun kolaborasi proyek teknologi.
+          Terbuka untuk kesempatan magang, proyek Cloud, Network, AI, serta Cybersecurity.
         </p>
 
         <div class="footer-actions">

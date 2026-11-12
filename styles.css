@@ -1,6 +1,5 @@
 /* ==========================================================================
    Muhammad Haikal Hidayat — Portfolio Stylesheet
-   Inspired by Clean High-Contrast Editorial Reference (Dymas Alfin Style)
    ========================================================================== */
 
 :root {
@@ -35,7 +34,7 @@
   --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --header-height: 5.25rem;
+  --header-height: 4.25rem;
 }
 
 *,
@@ -50,7 +49,13 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
   scrollbar-gutter: stable;
+  container-type: scroll-state;
   font-size: 100%;
+}
+
+:target,
+#skills {
+  scroll-margin-top: 4.75rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -122,25 +127,49 @@ textarea {
 
 /* Layout Containers */
 .container {
-  inline-size: min(100% - 3rem, 78rem);
+  inline-size: min(100% - 2.5rem, 78rem);
   margin-inline: auto;
 }
 
 /* ==========================================================================
-   HEADER & NAVIGATION (Dymas Alfin Reference Bar)
+   HEADER & RESPONSIVE POPOVER NAVIGATION (navbar + content-first-noise-reduction)
    ========================================================================== */
 .site-header {
   position: sticky;
   inset-block-start: 0;
   z-index: 100;
   min-block-size: var(--header-height);
-  background-color: rgba(255, 255, 255, 0.88);
+  background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(14px);
   border-block-end: 1px solid transparent;
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.28s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-/* Scroll-driven header compacting & shadow (shrinking-header-on-scroll) */
+/* Hide persistent top bar while scrolling down (content-first-noise-reduction) */
+@container scroll-state((scrolled: bottom) and (scrollable: top)) {
+  .site-header {
+    transform: translateY(-100%);
+  }
+}
+
+.site-header.is-hidden:not(:focus-within) {
+  transform: translateY(-100%);
+}
+
+.site-header:focus-within {
+  transform: none;
+}
+
+.site-header.is-measuring,
+.site-header.is-measuring * {
+  transition: none !important;
+}
+
+/* Scroll-driven header border & shadow (shrinking-header-on-scroll) */
 @keyframes header-compact {
   to {
     border-block-end-color: var(--border-light);
@@ -153,69 +182,162 @@ textarea {
     .site-header {
       animation: header-compact auto linear both;
       animation-timeline: scroll(block root);
-      animation-range: 0px 120px;
+      animation-range: 0px 100px;
     }
   }
 }
 
 .header-inner {
-  inline-size: min(100% - 3rem, 82rem);
+  inline-size: min(100% - 2rem, 82rem);
   margin-inline: auto;
   min-block-size: var(--header-height);
-  padding-block: 0.75rem;
+  padding-block: 0.55rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: safe center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
-/* Left Availability Pill */
-.availability-pill {
-  display: inline-flex;
-  align-items: safe center;
-  gap: 0.625rem;
-  padding: 0.55rem 1.15rem;
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-pill);
-  font-size: 0.875rem;
-  font-weight: 500;
+/* Keep the row's natural width measurable (navbar guide) */
+.header-inner > * {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Brand Monogram / Logo */
+.site-logo {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
+  padding-block: 0.25rem;
 }
 
-.status-dot {
-  inline-size: 0.55rem;
-  block-size: 0.55rem;
-  border-radius: 50%;
-  background-color: var(--accent-green);
-  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+.logo-dot {
+  color: var(--accent-green);
 }
 
-/* Center Navigation Links */
-.nav-list {
-  list-style: none;
+.primary-nav {
   display: flex;
-  flex-wrap: wrap;
-  flex-wrap: balance;
   align-items: safe center;
-  gap: clamp(1rem, 2.2vw, 2.25rem);
 }
 
-.nav-link {
+/* Collapsed Mobile Menu Trigger Button (navbar guide) */
+.menu-button {
+  anchor-name: --menu-button;
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.25rem;
+  align-items: safe center;
+  gap: 0.4rem;
+  min-block-size: 2.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-light);
+  background-color: var(--bg-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.menu-button:hover,
+.menu-button:focus-visible {
+  border-color: var(--text-primary);
+  background-color: var(--bg-subtle);
+}
+
+/* Narrow Layout: Popover Navigation (navbar guide) */
+.site-menu {
+  list-style: none;
+  position: fixed;
+  inset: auto;
+  /* Fallback offset before anchor() declaration (navbar guide) */
+  inset-block-start: 4.5rem;
+  inset-block-start: anchor(--menu-button bottom);
+  inset-inline-end: 1rem;
+  inline-size: min(82dvw, 20rem);
+  max-inline-size: calc(100dvw - 2rem);
+  block-size: fit-content;
+  max-block-size: calc(100dvh - 5.5rem);
+  margin-block-start: 0.5rem;
+  padding: 0.65rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-light);
+  background-color: var(--bg-primary);
+  box-shadow: 0 20px 42px -10px rgba(17, 17, 26, 0.16);
+  overflow: auto;
+}
+
+.site-menu:not(:is(:popover-open, .\:popover-open)) {
+  display: none;
+}
+
+.site-menu:is(:popover-open, .\:popover-open) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.2rem;
+}
+
+.site-menu .nav-link {
+  display: flex;
+  align-items: safe center;
+  justify-content: space-between;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.6rem;
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--text-primary);
-  padding-block: 0.25rem;
-  transition: color 0.2s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.nav-link:hover,
-.nav-link:focus-visible {
+.site-menu .nav-link:hover,
+.site-menu .nav-link:focus-visible {
+  background-color: var(--bg-subtle);
+}
+
+/* Wide Layout: Inline Navigation when row fits (navbar guide) */
+.site-header.is-wide .menu-button {
+  display: none;
+}
+
+.site-header.is-wide .site-menu {
+  position: static;
+  display: flex;
+  flex-direction: row;
+  align-items: safe center;
+  gap: clamp(0.85rem, 1.8vw, 1.85rem);
+  inline-size: auto;
+  max-inline-size: none;
+  block-size: auto;
+  max-block-size: none;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.site-header.is-wide .site-menu::backdrop {
+  display: none;
+}
+
+.site-header.is-wide .site-menu .nav-link {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  padding: 0.25rem 0;
+  border-radius: 0;
+}
+
+.site-header.is-wide .site-menu .nav-link:hover,
+.site-header.is-wide .site-menu .nav-link:focus-visible {
+  background-color: transparent;
   color: var(--text-secondary);
 }
 
@@ -230,14 +352,15 @@ textarea {
 .header-actions {
   display: flex;
   align-items: safe center;
-  gap: 0.75rem;
+  gap: 0.55rem;
 }
 
 .lang-toggle {
   display: inline-flex;
   align-items: safe center;
   gap: 0.25rem;
-  padding: 0.45rem 0.85rem;
+  min-block-size: 2.4rem;
+  padding: 0.4rem 0.75rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-light);
   background: var(--bg-subtle);
@@ -269,11 +392,11 @@ textarea {
   display: inline-flex;
   align-items: safe center;
   justify-content: center;
-  gap: 0.5rem;
-  min-block-size: 2.75rem;
-  padding: 0.6rem 1.35rem;
+  gap: 0.45rem;
+  min-block-size: 2.55rem;
+  padding: 0.5rem 1.15rem;
   border-radius: var(--radius-pill);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 500;
   border: 1px solid transparent;
   cursor: pointer;
@@ -322,8 +445,9 @@ textarea {
 }
 
 .btn-lg {
-  padding: 0.8rem 1.6rem;
-  font-size: 0.95rem;
+  min-block-size: 2.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
 }
 
 .btn-sm {
@@ -346,14 +470,14 @@ textarea {
    ========================================================================== */
 .hero-section {
   position: relative;
-  padding-block-start: clamp(1.5rem, 3vw, 2.75rem);
+  padding-block-start: clamp(1.25rem, 3vw, 2.5rem);
   padding-block-end: clamp(2.5rem, 5vw, 4.25rem);
   border-block-end: 1px solid var(--border-light);
   background: radial-gradient(circle at 50% 48%, rgba(24, 24, 27, 0.035) 0%, rgba(255, 255, 255, 0) 68%);
 }
 
 .hero-container {
-  inline-size: min(100% - 3rem, 82rem);
+  inline-size: min(100% - 2.5rem, 82rem);
   margin-inline: auto;
   container: hero-box / inline-size;
 }
@@ -387,20 +511,20 @@ textarea {
   row-gap: 0.25rem;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.65rem, 1rem + 7.2vw, 6.6rem);
+  font-size: clamp(2.5rem, 1rem + 7.2vw, 6.6rem);
   line-height: 1.04;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   text-align: center;
   user-select: none;
-  margin-block-end: clamp(2rem, 3.5vw, 3.25rem);
+  margin-block-end: clamp(1.75rem, 3.5vw, 3.25rem);
   position: relative;
   z-index: 1;
 }
 
 @supports (font-size: 1cqi) {
   .hero-display-name {
-    font-size: clamp(2.65rem, 9.6cqi, 6.6rem);
+    font-size: clamp(2.5rem, 9.6cqi, 6.6rem);
   }
 }
 
@@ -416,7 +540,7 @@ textarea {
 /* 3-Column Hero Stage — Cleanly separated below headline (no negative margin) */
 .hero-stage {
   display: grid;
-  grid-template-columns: 1.05fr minmax(280px, 400px) 0.95fr;
+  grid-template-columns: 1.05fr minmax(260px, 390px) 0.95fr;
   align-items: center;
   gap: clamp(1.5rem, 3vw, 2.75rem);
   margin-block-start: 0;
@@ -452,7 +576,7 @@ textarea {
 }
 
 .hero-role {
-  font-size: clamp(1.45rem, 1rem + 1.1vw, 2.15rem);
+  font-size: clamp(1.4rem, 1rem + 1.1vw, 2.15rem);
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -483,11 +607,11 @@ textarea {
 
 .geo-stage-card {
   inline-size: 100%;
-  max-inline-size: 24rem;
+  max-inline-size: 23.5rem;
   background: linear-gradient(165deg, #ffffff 0%, #f5f5f7 100%);
   border: 1px solid var(--border-light);
   border-radius: 1.75rem;
-  padding: 1.15rem 1.25rem;
+  padding: 1.1rem 1.2rem;
   box-shadow: 0 22px 48px -14px rgba(17, 17, 26, 0.09), 0 4px 12px -2px rgba(17, 17, 26, 0.04);
   display: flex;
   flex-direction: column;
@@ -501,7 +625,7 @@ textarea {
   justify-content: space-between;
   gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
 }
 
@@ -570,7 +694,7 @@ textarea {
   background-color: var(--accent-green);
 }
 
-/* Right Hero Social Stack (Matching Dymas Alfin Right Pills) */
+/* Right Hero Social Stack */
 .hero-right {
   display: flex;
   flex-direction: column;
@@ -610,7 +734,7 @@ textarea {
    COMMON SECTION STYLING & SCROLL ENTRY ANIMATIONS
    ========================================================================== */
 .section {
-  padding-block: clamp(4rem, 7vw, 6.5rem);
+  padding-block: clamp(3.5rem, 6.5vw, 6.25rem);
   border-block-end: 1px solid var(--border-light);
 }
 
@@ -648,13 +772,13 @@ textarea {
 }
 
 .section-title {
-  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  font-size: clamp(1.65rem, 1.15rem + 2vw, 2.75rem);
   font-weight: 800;
   color: var(--text-primary);
 }
 
 .section-subtitle {
-  font-size: 1rem;
+  font-size: 0.975rem;
   color: var(--text-secondary);
   max-inline-size: 48ch;
 }
@@ -664,8 +788,8 @@ textarea {
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1.5rem;
-  margin-block-end: 3rem;
+  gap: 1.25rem;
+  margin-block-end: 2.5rem;
 }
 
 /* ==========================================================================
@@ -675,21 +799,21 @@ textarea {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: clamp(1.5rem, 4vw, 4rem);
-  margin-block-end: 3.5rem;
+  margin-block-end: 3rem;
 }
 
 .lead-paragraph {
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 1rem + 0.7vw, 1.55rem);
+  font-size: clamp(1.15rem, 1rem + 0.65vw, 1.5rem);
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.42;
   color: var(--text-primary);
-  margin-block-end: 1.1rem;
+  margin-block-end: 1rem;
   max-inline-size: 62ch;
 }
 
 .body-paragraph {
-  font-size: 1rem;
+  font-size: 0.975rem;
   color: var(--text-secondary);
   max-inline-size: 68ch;
   line-height: 1.7;
@@ -697,18 +821,18 @@ textarea {
 
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 1.1rem;
 }
 
 .metric-card {
   background-color: var(--bg-subtle);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-card);
-  padding: 1.6rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .metric-label {
@@ -719,14 +843,14 @@ textarea {
 
 .metric-value {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);
+  font-size: clamp(1.9rem, 1.45rem + 1.4vw, 2.65rem);
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.1;
 }
 
 .metric-unit {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-muted);
   margin-inline-start: 0.2rem;
@@ -742,7 +866,7 @@ textarea {
    ========================================================================== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 1.5rem;
 }
 
@@ -751,13 +875,13 @@ textarea {
   background-color: var(--bg-primary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-card);
-  padding: 1.75rem;
+  padding: 1.65rem;
   grid-row: span 4;
   display: grid;
   /* Same-cascade fallback before subgrid (css-layout) */
   grid-template-rows: auto auto 1fr auto;
   grid-template-rows: subgrid;
-  gap: 1.25rem;
+  gap: 1.2rem;
   box-shadow: var(--shadow-card);
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
@@ -779,14 +903,15 @@ textarea {
 
 .project-card-top {
   display: flex;
+  flex-wrap: wrap;
   align-items: safe center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .project-number {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-muted);
 }
@@ -796,9 +921,9 @@ textarea {
   align-items: safe center;
   gap: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 0.7rem;
   border-radius: var(--radius-pill);
 }
 
@@ -829,15 +954,15 @@ textarea {
 /* Visual Schematic Banner inside Project Cards */
 .project-visual {
   border-radius: var(--radius-sm);
-  padding: 1.25rem 1rem;
+  padding: 1.15rem 0.9rem;
   background-color: var(--bg-subtle);
   border: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
-  min-block-size: 7.5rem;
+  gap: 0.6rem;
+  min-block-size: 7.25rem;
 }
 
 .visual-security {
@@ -846,8 +971,7 @@ textarea {
   border-color: #27272a;
 }
 
-.visual-schematic,
-.visual-\ schematic {
+.visual-schematic {
   display: flex;
   flex-wrap: wrap;
   align-items: safe center;
@@ -857,8 +981,8 @@ textarea {
 
 .schematic-node {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 0.35rem 0.65rem;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 0.4rem;
   background: rgba(128, 128, 128, 0.12);
   border: 1px solid rgba(128, 128, 128, 0.25);
@@ -884,7 +1008,7 @@ textarea {
 
 .visual-caption {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   opacity: 0.7;
 }
 
@@ -897,8 +1021,8 @@ textarea {
 
 .wip-mono {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
 }
 
@@ -912,30 +1036,30 @@ textarea {
 .project-body {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
 }
 
 /* Fluid scaling on project card title (fluid-scaling) */
 .project-title {
-  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  font-size: clamp(1.18rem, 4vw, 1.45rem);
   font-weight: 700;
   color: var(--text-primary);
 }
 
 @supports (font-size: 1cqi) {
   .project-title {
-    font-size: clamp(1.2rem, 5.2cqi, 1.5rem);
+    font-size: clamp(1.18rem, 5.2cqi, 1.45rem);
   }
 }
 
 .project-role-tag {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
 .project-description {
-  font-size: 0.925rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -977,7 +1101,7 @@ textarea {
 .project-meta {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1.05rem;
   padding-block-start: 0.75rem;
   border-block-start: 1px solid var(--border-subtle);
 }
@@ -993,7 +1117,7 @@ textarea {
 
 .tech-tag {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.73rem;
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-pill);
   background-color: var(--bg-subtle);
@@ -1012,7 +1136,7 @@ textarea {
    ========================================================================== */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.25rem;
 }
 
@@ -1020,12 +1144,12 @@ textarea {
   background-color: var(--bg-subtle);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-card);
-  padding: 1.75rem;
+  padding: 1.65rem;
   grid-row: span 4;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
   grid-template-rows: subgrid;
-  gap: 0.9rem;
+  gap: 0.85rem;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -1042,13 +1166,13 @@ textarea {
 }
 
 .service-title {
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .service-desc {
-  font-size: 0.925rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -1063,11 +1187,11 @@ textarea {
 }
 
 .filter-btn {
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 0.95rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-light);
   background-color: var(--bg-primary);
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 500;
   color: var(--text-secondary);
   cursor: pointer;
@@ -1088,14 +1212,14 @@ textarea {
 .timeline-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.15rem;
 }
 
 .timeline-item {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 2rem;
-  padding: 1.75rem;
+  grid-template-columns: 210px 1fr;
+  gap: 1.75rem;
+  padding: 1.65rem;
   border-radius: var(--radius-card);
   border: 1px solid var(--border-light);
   background-color: var(--bg-primary);
@@ -1115,12 +1239,12 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .timeline-badge {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   padding: 0.2rem 0.65rem;
   border-radius: var(--radius-pill);
@@ -1140,34 +1264,34 @@ textarea {
 
 .timeline-date {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.825rem;
   color: var(--text-muted);
 }
 
 .timeline-header {
-  margin-block-end: 0.85rem;
+  margin-block-end: 0.75rem;
 }
 
 .timeline-role {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .timeline-org {
-  font-size: 0.95rem;
+  font-size: 0.925rem;
   font-weight: 600;
   color: var(--text-secondary);
   margin-block-start: 0.15rem;
 }
 
 .timeline-bullets {
-  padding-inline-start: 1.2rem;
+  padding-inline-start: 1.15rem;
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
   color: var(--text-secondary);
-  font-size: 0.9375rem;
+  font-size: 0.925rem;
 }
 
 /* ==========================================================================
@@ -1181,21 +1305,21 @@ textarea {
 
 .edu-cards,
 .skills-groups {
-  margin-block-start: 2rem;
+  margin-block-start: 1.75rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.15rem;
 }
 
 .edu-card,
 .skill-box {
-  padding: 1.6rem;
+  padding: 1.5rem;
   border-radius: var(--radius-card);
   border: 1px solid var(--border-light);
   background-color: var(--bg-subtle);
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.75rem;
 }
 
 .edu-card-header {
@@ -1207,32 +1331,21 @@ textarea {
 }
 
 .edu-school {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .edu-degree {
-  font-size: 0.95rem;
+  font-size: 0.925rem;
   font-weight: 500;
   color: var(--text-secondary);
 }
 
 .edu-period {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
-}
-
-.edu-gpa-badge {
-  align-self: flex-start;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-pill);
-  background-color: var(--bg-dark);
-  color: var(--text-on-dark);
 }
 
 .edu-detail {
@@ -1242,15 +1355,15 @@ textarea {
 }
 
 .skill-box-title {
-  font-size: 1rem;
+  font-size: 0.975rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .skill-pill {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 500;
-  padding: 0.4rem 0.85rem;
+  padding: 0.38rem 0.8rem;
   border-radius: var(--radius-pill);
   background-color: var(--bg-primary);
   border: 1px solid var(--border-light);
@@ -1259,7 +1372,7 @@ textarea {
 
 .language-bars {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 0.75rem;
 }
 
@@ -1291,15 +1404,15 @@ textarea {
 .site-footer {
   background-color: var(--bg-dark);
   color: var(--text-on-dark);
-  padding-block: clamp(4rem, 7vw, 6rem) 2.5rem;
+  padding-block: clamp(3.5rem, 6.5vw, 5.75rem) 2.25rem;
 }
 
 .footer-cta-block {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.25rem;
-  padding-block-end: 3.5rem;
+  gap: 1.15rem;
+  padding-block-end: 3rem;
   border-block-end: 1px solid var(--border-dark);
 }
 
@@ -1308,13 +1421,13 @@ textarea {
 }
 
 .footer-display-title {
-  font-size: clamp(2rem, 1.2rem + 3vw, 3.5rem);
+  font-size: clamp(1.85rem, 1.2rem + 2.8vw, 3.35rem);
   font-weight: 800;
   max-inline-size: 22ch;
 }
 
 .footer-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: #a1a1aa;
   max-inline-size: 56ch;
 }
@@ -1322,24 +1435,24 @@ textarea {
 .footer-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.85rem;
-  margin-block-start: 0.75rem;
+  gap: 0.75rem;
+  margin-block-start: 0.5rem;
 }
 
 .footer-bottom {
-  padding-block-start: 2rem;
+  padding-block-start: 1.75rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: safe center;
   gap: 1rem;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: #a1a1aa;
 }
 
 .back-to-top {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-on-dark);
   padding: 0.4rem 0.85rem;
   border-radius: var(--radius-pill);
@@ -1370,10 +1483,10 @@ textarea {
 }
 
 .dialog-inner {
-  padding: 2rem;
+  padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.15rem;
 }
 
 .dialog-header {
@@ -1384,7 +1497,7 @@ textarea {
 }
 
 .dialog-title {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
 }
 
@@ -1439,7 +1552,7 @@ textarea {
 .dialog-form {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 0.85rem;
 }
 
 .form-field {
@@ -1476,7 +1589,7 @@ textarea {
 }
 
 /* ==========================================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS (MOBILE & TABLET OPTIMIZATION)
    ========================================================================== */
 @media (max-width: 1024px) {
   .hero-stage {
@@ -1487,7 +1600,11 @@ textarea {
 
   .hero-left {
     align-items: center;
-    padding-block-end: 1rem;
+  }
+
+  .role-badge-group,
+  .hero-cta-group {
+    justify-content: center;
   }
 
   .hero-tagline {
@@ -1499,7 +1616,6 @@ textarea {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding-block-end: 2.5rem;
   }
 
   .social-pill {
@@ -1511,19 +1627,44 @@ textarea {
   .timeline-item {
     grid-template-columns: 1fr;
   }
+
+  .timeline-item {
+    gap: 1rem;
+  }
 }
 
 @media (max-width: 640px) {
-  .header-inner {
-    justify-content: center;
+  .container,
+  .hero-container {
+    inline-size: min(100% - 2rem, 78rem);
   }
 
-  .availability-pill {
-    font-size: 0.78rem;
-    padding: 0.4rem 0.85rem;
+  .btn-header-cta {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8125rem;
+    min-block-size: 2.4rem;
   }
 
   .display-outline {
     -webkit-text-stroke: 1.75px var(--text-primary);
+  }
+
+  .geo-stage-card {
+    max-inline-size: 19.5rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .metric-card,
+  .project-card,
+  .service-card,
+  .timeline-item,
+  .edu-card,
+  .skill-box {
+    padding: 1.25rem;
+  }
+
+  .footer-actions .btn-lg {
+    inline-size: 100%;
+    justify-content: center;
   }
 }

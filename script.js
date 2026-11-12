@@ -1,34 +1,43 @@
 /**
  * Muhammad Haikal Hidayat — Portfolio Client Script
  * Features:
- * 1. Bilingual ID / EN switcher
- * 2. Hero Portrait Style switcher (Formal Shirt, Editorial Duotone, Smart Casual)
- * 3. Experience timeline filtering
- * 4. Native <dialog> modal interaction & WhatsApp/Email message composer
- * 5. Progressive enhancement fallbacks for CSS Scroll-Driven Animations
+ * 1. Conditional Popover API polyfill + Responsive Navbar measurement (navbar guide)
+ * 2. Auto-hiding persistent header on scroll down (content-first-noise-reduction guide)
+ * 3. Bilingual ID / EN switcher
+ * 4. Interactive 3D Abstract Geometric Cyber-Lattice (Canvas)
+ * 5. Experience timeline filtering
+ * 6. Native <dialog> modal interaction & WhatsApp/Email message composer
+ * 7. Progressive enhancement fallbacks for CSS Scroll-Driven Animations
  */
+
+// MANDATORY: Feature detect 'popover' on HTMLElement.prototype before loading polyfill (navbar guide)
+if (!Object.hasOwn(HTMLElement.prototype, 'popover')) {
+  import('https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js');
+}
 
 const translations = {
   id: {
-    'nav.available': 'Available for New Project',
+    'nav.menu': 'Menu',
     'nav.work': 'Work',
     'nav.service': 'Service',
     'nav.experience': 'Experience',
     'nav.education': 'Education',
+    'nav.skills': 'Skills',
     'nav.contact': 'Contact',
     'nav.letsTalk': "Let's Talk",
-    'hero.univ': 'Teknologi Rekayasa Internet — Universitas Gadjah Mada (GPA 3.71/4.00)',
-    'hero.chip1': 'Cybersecurity & IoT Security',
-    'hero.chip2': 'Network Operations',
-    'hero.chip3': 'AI Enthusiast',
-    'hero.role': 'Internet Engineering & Security',
+    'hero.univ': 'Teknologi Rekayasa Internet — Universitas Gadjah Mada',
+    'hero.chip1': 'Cloud',
+    'hero.chip2': 'Network',
+    'hero.chip3': 'AI',
+    'hero.chip4': 'Cybersecurity',
+    'hero.role': 'Internet Engineering Technology',
     'hero.tagline':
-      'Mahasiswa Teknologi Rekayasa Internet UGM yang berfokus pada pengembangan keamanan sistem IoT, operasional jaringan berskala nasional (NOC), dan integrasi kecerdasan buatan.',
+      'Mahasiswa Teknologi Rekayasa Internet UGM dengan minat dan fokus di bidang Cloud, Network, Artificial Intelligence, serta Cybersecurity.',
     'hero.ctaPrimary': "Let's collaborate",
     'hero.ctaSecondary': 'Lihat Profil Lengkap',
     'about.title': 'Tentang Saya',
     'about.lead':
-      'Mahasiswa Sarjana Terapan Teknologi Rekayasa Internet di Universitas Gadjah Mada (IPK 3.71/4.00) dengan minat kuat di bidang Artificial Intelligence dan Cybersecurity.',
+      'Mahasiswa Sarjana Terapan Teknologi Rekayasa Internet di Universitas Gadjah Mada dengan minat kuat di bidang Cloud, Network, Artificial Intelligence, dan Cybersecurity.',
     'about.body':
       'Saya memiliki pengalaman langsung dalam operasional jaringan (Network Operations Center), memantau ratusan titik jaringan di wilayah 3T (Terdepan, Terluar, Tertinggal), mendukung teknisi lapangan dalam pemecahan masalah (troubleshooting), serta menyusun laporan status harian. Selain itu, saya berpengalaman dalam penjaminan kualitas data (Data QA), membersihkan, memvalidasi, dan menstrukturkan data marketplace untuk mendukung analisis klien. Melalui keterlibatan aktif di organisasi kemahasiswaan dan konferensi teknologi internasional, saya terus mengasah kemampuan kolaborasi tim, komunikasi profesional, dan koordinasi acara.',
     'metrics.m1Label': 'IPK Universitas Gadjah Mada',
@@ -58,21 +67,21 @@ const translations = {
       'Proyek kolaborasi ini saat ini sedang dalam tahap pengerjaan (On Progress).',
     'work.repoOwnerLabel': 'Repositori Tim:',
     'work.viewRepo': 'Lihat Repository Tim',
-    'services.title': 'Bidang Keahlian Utama',
+    'services.title': 'Bidang Minat & Keahlian Utama',
     'services.subtitle':
-      'Kombinasi keahlian teknis di bidang infrastruktur jaringan, keamanan siber, pemrograman, dan penjaminan kualitas data.',
-    'services.s1Title': 'Network Operations & MikroTik',
+      'Berfokus pada empat pilar utama: Cloud Computing, Network Operations, Artificial Intelligence, dan Cybersecurity.',
+    'services.s1Title': 'Cloud & Linux Infrastructure',
     'services.s1Desc':
-      'Pemantauan infrastruktur jaringan skala besar (NOC) di wilayah 3T, konfigurasi router MikroTik, administrasi sistem Linux, analisis insiden konektivitas, dan pelaporan status operasional harian.',
-    'services.s2Title': 'Cybersecurity & IoT Security',
+      'Pengelolaan sistem berbasis Linux Administration, arsitektur layanan Cloud Computing, kontainerisasi aplikasi, serta pengoperasian infrastruktur terdistribusi yang andal.',
+    'services.s2Title': 'Network Operations & MikroTik',
     'services.s2Desc':
-      'Penguatan keamanan sistem Internet of Things (IoT), autentikasi kriptografis antar-gateway, manajemen kontrol akses (RBAC), pengamanan sesi pengguna, dan mitigasi celah keamanan jaringan.',
-    'services.s3Title': 'AI Integration & Web Development',
+      'Pemantauan infrastruktur jaringan skala besar (NOC) di wilayah 3T, konfigurasi router MikroTik, analisis insiden konektivitas lintas klaster, dan pelaporan operasional harian.',
+    'services.s3Title': 'Artificial Intelligence & Data QA',
     'services.s3Desc':
-      'Pengembangan aplikasi web dan prototipe berbasis kecerdasan buatan menggunakan Python, JavaScript, HTML, PHP, serta pemrograman basis data untuk sistem pemantauan dan kontrol cerdas.',
-    'services.s4Title': 'Data QA & Technical Coordination',
+      'Integrasi model kecerdasan buatan pada sistem otomasi dan web menggunakan Python & JavaScript, disertai penjaminan kualitas, validasi, serta strukturisasi ribuan data produk.',
+    'services.s4Title': 'Cybersecurity & IoT Security',
     'services.s4Desc':
-      'Pembersihan, validasi, dan standarisasi ribuan data produk multi-marketplace untuk analisis pasar, didukung kemampuan komunikasi publik, manajemen acara teknologi, dan kolaborasi lintas divisi.',
+      'Penguatan keamanan sistem Internet of Things (IoT), autentikasi kriptografis antar-gateway, manajemen kontrol akses (RBAC), pengamanan sesi pengguna, dan mitigasi celah keamanan.',
     'exp.title': 'Pengalaman Profesional & Organisasi',
     'exp.filterAll': 'Semua [06]',
     'exp.filterPro': 'Profesional [02]',
@@ -112,7 +121,7 @@ const translations = {
     'edu.ugmDegree': 'Sarjana Terapan (D4), Teknologi Rekayasa Internet',
     'edu.ugmPeriod': 'Agu 2024 – Sekarang',
     'edu.courseworkLabel': 'Mata Kuliah Relevan:',
-    'edu.ugmCourses': 'Cybersecurity, Cloud Computing, Network Administration, Internet of Things.',
+    'edu.ugmCourses': 'Cloud Computing, Network Administration, Artificial Intelligence, Cybersecurity, Internet of Things.',
     'edu.projectLabel': 'Proyek Akademik:',
     'edu.ugmProjects':
       'Pengembangan SAPA (Smart Access Prototyping Application), Penguatan Keamanan untuk Sistem Monitoring Gedung Pintar (Smart Building Monitoring Systems).',
@@ -130,7 +139,7 @@ const translations = {
     'skills.langEn': 'Conversational',
     'contact.title': 'Mari Berkolaborasi pada Proyek Berikutnya.',
     'contact.subtitle':
-      'Terbuka untuk kesempatan magang, riset keamanan IoT & jaringan, pengembangan sistem AI, maupun kolaborasi proyek teknologi.',
+      'Terbuka untuk kesempatan magang, proyek Cloud, Network, AI, serta Cybersecurity.',
     'contact.backToTop': 'Kembali ke Atas ↑',
     'modal.title': 'Hubungi Muhammad Haikal',
     'modal.desc':
@@ -142,25 +151,27 @@ const translations = {
     'modal.sendEmail': 'Buka di Email Client',
   },
   en: {
-    'nav.available': 'Available for New Project',
+    'nav.menu': 'Menu',
     'nav.work': 'Work',
     'nav.service': 'Service',
     'nav.experience': 'Experience',
     'nav.education': 'Education',
+    'nav.skills': 'Skills',
     'nav.contact': 'Contact',
     'nav.letsTalk': "Let's Talk",
-    'hero.univ': 'Internet Engineering Technology — Universitas Gadjah Mada (GPA 3.71/4.00)',
-    'hero.chip1': 'Cybersecurity & IoT Security',
-    'hero.chip2': 'Network Operations',
-    'hero.chip3': 'AI Enthusiast',
-    'hero.role': 'Internet Engineering & Security',
+    'hero.univ': 'Internet Engineering Technology — Universitas Gadjah Mada',
+    'hero.chip1': 'Cloud',
+    'hero.chip2': 'Network',
+    'hero.chip3': 'AI',
+    'hero.chip4': 'Cybersecurity',
+    'hero.role': 'Internet Engineering Technology',
     'hero.tagline':
-      'Undergraduate Internet Engineering Technology student at UGM focusing on IoT security hardening, large-scale Network Operations (NOC), and AI-driven systems.',
+      'Undergraduate Internet Engineering Technology student at UGM with a strong focus on Cloud, Network, Artificial Intelligence, and Cybersecurity.',
     'hero.ctaPrimary': "Let's collaborate",
     'hero.ctaSecondary': 'Explore Full Profile',
     'about.title': 'About Me',
     'about.lead':
-      'Undergraduate Internet Engineering Technology student at Universitas Gadjah Mada (GPA 3.71/4.00) with a strong interest in Artificial Intelligence and Cybersecurity.',
+      'Undergraduate Internet Engineering Technology student at Universitas Gadjah Mada with a strong interest in Cloud, Network, Artificial Intelligence, and Cybersecurity.',
     'about.body':
       'I have hands-on experience in network operations, where I monitor network sites across frontier, outermost, and disadvantaged (3T) regions, support field technicians in troubleshooting, and prepare daily status reports. I also have experience in data quality assurance, cleaning, validating, and structuring marketplace data to support client analysis. Through my involvement in student organizations and technology events, I have strengthened my teamwork, professional communication, and event coordination skills.',
     'metrics.m1Label': 'Universitas Gadjah Mada GPA',
@@ -190,21 +201,21 @@ const translations = {
       'This collaborative project is currently on progress.',
     'work.repoOwnerLabel': 'Team Repository:',
     'work.viewRepo': 'View Team Repository',
-    'services.title': 'Core Competencies',
+    'services.title': 'Core Focus & Competencies',
     'services.subtitle':
-      'Combining technical execution in network operations, cybersecurity hardening, software development, and data quality assurance.',
-    'services.s1Title': 'Network Operations & MikroTik',
+      'Focused on four primary pillars: Cloud Computing, Network Operations, Artificial Intelligence, and Cybersecurity.',
+    'services.s1Title': 'Cloud & Linux Infrastructure',
     'services.s1Desc':
-      'Large-scale network site monitoring (NOC) across 3T regions, MikroTik router configuration, Linux system administration, incident troubleshooting, and daily operational reporting.',
-    'services.s2Title': 'Cybersecurity & IoT Security',
+      'Managing Linux system environments, Cloud Computing architectures, containerized services, and reliable distributed infrastructure operations.',
+    'services.s2Title': 'Network Operations & MikroTik',
     'services.s2Desc':
-      'Hardening Internet of Things (IoT) architectures, gateway-to-cloud authentication, Role-Based Access Control (RBAC), session protection, and network vulnerability mitigation.',
-    'services.s3Title': 'AI Integration & Web Development',
+      'Large-scale network site monitoring (NOC) across 3T regions, MikroTik router configuration, cross-cluster incident troubleshooting, and daily operational reporting.',
+    'services.s3Title': 'Artificial Intelligence & Data QA',
     'services.s3Desc':
-      'Developing web applications and AI-integrated prototypes using Python, JavaScript, HTML, PHP, and relational/non-relational database programming.',
-    'services.s4Title': 'Data QA & Technical Coordination',
+      'Integrating AI models into web and automation workflows using Python & JavaScript, paired with high-volume dataset validation, cleaning, and structuring.',
+    'services.s4Title': 'Cybersecurity & IoT Security',
     'services.s4Desc':
-      'Cleaning, validating, and standardizing high-volume multi-marketplace datasets for client analytics, paired with strong public relations and tech event coordination.',
+      'Hardening Internet of Things (IoT) architectures, gateway-to-cloud authentication, Role-Based Access Control (RBAC), session protection, and vulnerability mitigation.',
     'exp.title': 'Professional & Leadership Experience',
     'exp.filterAll': 'All [06]',
     'exp.filterPro': 'Professional [02]',
@@ -244,7 +255,7 @@ const translations = {
     'edu.ugmDegree': 'Bachelor of Applied Science, Internet Engineering',
     'edu.ugmPeriod': 'Aug 2024 – Present',
     'edu.courseworkLabel': 'Relevant Coursework:',
-    'edu.ugmCourses': 'Cybersecurity, Cloud Computing, Network Administration, Internet of Things.',
+    'edu.ugmCourses': 'Cloud Computing, Network Administration, Artificial Intelligence, Cybersecurity, Internet of Things.',
     'edu.projectLabel': 'Projects:',
     'edu.ugmProjects':
       'Developed SAPA (Smart Access Prototyping Application), Security Enhancement for Smart Building Monitoring Systems.',
@@ -262,7 +273,7 @@ const translations = {
     'skills.langEn': 'Conversational',
     'contact.title': "Let's Collaborate on Your Next Project.",
     'contact.subtitle':
-      'Open for internship opportunities, IoT & network security projects, AI system integration, and technical collaborations.',
+      'Open for internship opportunities and collaborations across Cloud, Network, AI, and Cybersecurity.',
     'contact.backToTop': 'Back to Top ↑',
     'modal.title': 'Contact Muhammad Haikal',
     'modal.desc':
@@ -276,7 +287,88 @@ const translations = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Language Switcher (ID / EN)
+  // 1. Responsive Popover Navbar Measurement (modern-web-guidance: navbar)
+  const siteHeader = document.querySelector('.site-header');
+  const headerInner = document.querySelector('.header-inner');
+  const siteMenu = document.getElementById('site-menu');
+  let lastHeaderWidth = 0;
+
+  const syncNavbarLayout = (forceMeasure = false) => {
+    if (!siteHeader || !headerInner || !siteMenu) return;
+    const currentWidth = siteHeader.clientWidth;
+    const isCurrentlyWide = siteHeader.classList.contains('is-wide');
+
+    // While collapsed, only remeasure when the header's width has grown (prevents layout thrashing)
+    if (!forceMeasure && !isCurrentlyWide && currentWidth <= lastHeaderWidth) {
+      lastHeaderWidth = currentWidth;
+      return;
+    }
+    lastHeaderWidth = currentWidth;
+
+    const wasPopoverOpen = siteMenu.matches(':popover-open, .\\:popover-open');
+
+    siteHeader.classList.add('is-measuring', 'is-wide');
+    siteMenu.removeAttribute('popover');
+
+    const fitsInline = headerInner.scrollWidth <= headerInner.clientWidth;
+
+    if (fitsInline) {
+      siteHeader.classList.add('is-wide');
+      siteMenu.removeAttribute('popover');
+    } else {
+      siteHeader.classList.remove('is-wide');
+      siteMenu.setAttribute('popover', 'auto');
+      if (wasPopoverOpen && typeof siteMenu.showPopover === 'function') {
+        try {
+          siteMenu.showPopover();
+        } catch {
+          // Ignore if polyfill not yet initialized
+        }
+      }
+    }
+
+    requestAnimationFrame(() => {
+      siteHeader.classList.remove('is-measuring');
+    });
+  };
+
+  if (siteHeader && siteMenu) {
+    const navResizeObserver = new ResizeObserver(() => syncNavbarLayout(false));
+    navResizeObserver.observe(siteHeader);
+    navResizeObserver.observe(siteMenu);
+    syncNavbarLayout(true);
+
+    // Close mobile popover when a navigation link is clicked
+    siteMenu.querySelectorAll('a.nav-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (!siteHeader.classList.contains('is-wide') && typeof siteMenu.hidePopover === 'function') {
+          try {
+            siteMenu.hidePopover();
+          } catch {
+            // Ignore if already closed
+          }
+        }
+      });
+    });
+  }
+
+  // 2. Fallback for Auto-Hiding Header on Scroll Down (modern-web-guidance: content-first-noise-reduction)
+  if (!CSS.supports('container-type', 'scroll-state') && siteHeader) {
+    let lastY = window.scrollY;
+    window.addEventListener(
+      'scroll',
+      () => {
+        const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        const y = Math.max(0, Math.min(window.scrollY, maxScroll));
+        if (y === lastY) return;
+        siteHeader.classList.toggle('is-hidden', y > lastY && y > siteHeader.offsetHeight);
+        lastY = y;
+      },
+      { passive: true }
+    );
+  }
+
+  // 3. Language Switcher (ID / EN)
   let currentLang = localStorage.getItem('haikal_portfolio_lang') || 'id';
   const langToggleBtn = document.getElementById('lang-toggle');
   const langIndicators = document.querySelectorAll('[data-lang-indicator]');
@@ -297,6 +389,9 @@ document.addEventListener('DOMContentLoaded', () => {
     langIndicators.forEach((ind) => {
       ind.classList.toggle('active', ind.getAttribute('data-lang-indicator') === lang);
     });
+
+    // Remeasure navbar after translation text length changes
+    syncNavbarLayout(true);
   };
 
   if (langToggleBtn) {
@@ -306,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   applyLanguage(currentLang);
 
-  // 2. Interactive 3D Abstract Geometric Cyber-Lattice (Canvas)
+  // 4. Interactive 3D Abstract Geometric Cyber-Lattice (Canvas)
   const geoCanvas = document.getElementById('geo-3d-canvas');
   const motionBtn = document.getElementById('toggle-geo-motion');
 
@@ -336,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
       [4, 9, 5], [2, 4, 11], [6, 2, 10], [8, 6, 7], [9, 8, 1],
     ];
 
-    // Inner Octahedron Core vertices & edges
+    // Inner Octahedron Core vertices & faces
     const innerVerts = [
       [1, 0, 0], [-1, 0, 0], [0, 1, 0],
       [0, -1, 0], [0, 0, 1], [0, 0, -1],
@@ -367,7 +462,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Subtle interactive pointer tilt
     geoCanvas.addEventListener('pointermove', (e) => {
       const rect = geoCanvas.getBoundingClientRect();
       const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
@@ -384,13 +478,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const rotatePoint = ([x, y, z], ax, ay, az) => {
-      // Rotate Y
       let x1 = x * Math.cos(ay) + z * Math.sin(ay);
       let z1 = -x * Math.sin(ay) + z * Math.cos(ay);
-      // Rotate X
       let y2 = y * Math.cos(ax) - z1 * Math.sin(ax);
       let z2 = y * Math.sin(ax) + z1 * Math.cos(ax);
-      // Rotate Z
       let x3 = x1 * Math.cos(az) - y2 * Math.sin(az);
       let y3 = x1 * Math.sin(az) + y2 * Math.cos(az);
       return [x3, y3, z2];
@@ -433,18 +524,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const ax = rotX + targetTiltX * 0.35;
       const ay = rotY + targetTiltY * 0.35;
 
-      // Subtle background architectural grid hairlines
       ctx.strokeStyle = 'rgba(24, 24, 27, 0.06)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.arc(size / 2, size / 2, 186, 0, Math.PI * 2);
       ctx.stroke();
 
-      // 1. Back Orbital Gyro Rings
       drawRing(175, ax * 0.6 + 1.05, ay * 0.5, 0.3, true, 'rgba(24, 24, 27, 0.22)');
       drawRing(152, -ax * 0.4 + 0.5, -ay * 0.7, -0.4, false, 'rgba(24, 24, 27, 0.14)');
 
-      // 2. Transform Outer Icosahedron Lattice & Inner Core
       const outerScale = 122;
       const innerScale = 64;
 
@@ -454,14 +542,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const tInner = innerVerts.map((v) => rotatePoint(v, -ax * 1.3, -ay * 1.2, 0.4));
       const pInner = tInner.map((v) => project(v, innerScale));
 
-      // Sort outer faces back-to-front
       const sortedOuter = faces
         .map((f) => {
           const v0 = tOuter[f[0]];
           const v1 = tOuter[f[1]];
           const v2 = tOuter[f[2]];
           const cz = (v0[2] + v1[2] + v2[2]) / 3;
-          // Face normal
           const ux = v1[0] - v0[0];
           const uy = v1[1] - v0[1];
           const uz = v1[2] - v0[2];
@@ -472,13 +558,11 @@ document.addEventListener('DOMContentLoaded', () => {
           const ny = uz * vx - ux * vz;
           const nz = ux * vy - uy * vx;
           const nLen = Math.hypot(nx, ny, nz) || 1;
-          // Light direction (top-left-front)
           const light = (nx * -0.45 + ny * -0.6 + nz * 0.66) / nLen;
           return { f, cz, nz: nz / nLen, light };
         })
         .sort((a, b) => a.cz - b.cz);
 
-      // Draw back-facing outer facets (translucent architectural glass)
       sortedOuter.forEach(({ f, nz }) => {
         if (nz > 0) return;
         const p0 = pOuter[f[0]];
@@ -496,7 +580,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
       });
 
-      // Draw Inner Obsidian Octahedron Core (Solid shaded 3D crystal)
       const sortedInner = innerFaces
         .map((f) => {
           const v0 = tInner[f[0]];
@@ -535,7 +618,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
       });
 
-      // Draw front-facing outer facets (crisp geometric cage + shaded planes)
       sortedOuter.forEach(({ f, nz, light }) => {
         if (nz <= 0) return;
         const p0 = pOuter[f[0]];
@@ -554,7 +636,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
       });
 
-      // Draw Node Vertices on Outer Geodesic Shell
       pOuter.forEach((p, idx) => {
         const r = p.z > 0 ? 4.2 : 2.6;
         ctx.beginPath();
@@ -583,7 +664,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 3. Experience Timeline Filter
+  // 5. Experience Timeline Filter
   const filterButtons = document.querySelectorAll('.filter-btn[data-exp-filter]');
   const timelineItems = document.querySelectorAll('.timeline-item[data-exp-category]');
 
@@ -601,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. Native <dialog> Modal ("Let's Talk")
+  // 6. Native <dialog> Modal ("Let's Talk")
   const contactDialog = document.getElementById('contact-dialog');
   const openModalBtn = document.getElementById('open-contact-modal');
   const quickMessageForm = document.getElementById('quick-message-form');
@@ -642,7 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Fallback for Scroll-Driven Animations (modern-web-guidance: scroll-entry-exit-effects & shrinking-header-on-scroll)
+  // 7. Fallback for Scroll-Driven Animations
   if (
     !CSS.supports('(animation-timeline: view()) and (animation-range: entry)') &&
     window.matchMedia('(prefers-reduced-motion: no-preference)').matches
@@ -665,18 +746,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (!CSS.supports('(animation-timeline: scroll()) and (animation-range: 0% 100%)')) {
-    const header = document.querySelector('.site-header');
-    if (header) {
-      window.addEventListener(
-        'scroll',
-        () => {
-          const scrolled = window.scrollY > 40;
-          header.style.borderBlockEndColor = scrolled ? 'var(--border-light)' : 'transparent';
-          header.style.boxShadow = scrolled ? '0 4px 20px -4px rgba(0, 0, 0, 0.05)' : 'none';
-        },
-        { passive: true }
-      );
-    }
+  if (!CSS.supports('(animation-timeline: scroll()) and (animation-range: 0% 100%)') && siteHeader) {
+    window.addEventListener(
+      'scroll',
+      () => {
+        const scrolled = window.scrollY > 40;
+        siteHeader.style.borderBlockEndColor = scrolled ? 'var(--border-light)' : 'transparent';
+        siteHeader.style.boxShadow = scrolled ? '0 4px 20px -4px rgba(0, 0, 0, 0.05)' : 'none';
+      },
+      { passive: true }
+    );
   }
 });
